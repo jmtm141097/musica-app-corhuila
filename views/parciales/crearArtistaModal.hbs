@@ -1,0 +1,48 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearArtista">
+    Crear un nuevo artista
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="crearArtista" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="crearArtistaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearArtistaLabel">Creacion de un Nuevo Artista</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/nuevoArtista" method="POST" class="was-validated">
+
+                <div class="modal-body text-left">
+                    <div class="form-group">
+                        <label for="txtNombreArtista">Nombre del Artista:</label>
+                        <input type="text" class="form-control" minlength="3" maxlength="45" id="txtNombreArtista"
+                            name="txtNombreArtista" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescripcionArtista">Descripcion del Artista:</label>
+                        <textarea class="form-control" name="txtDescripcionArtista" id="txtDescripcionArtista" cols="30"
+                            rows="10" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtImagenArtista">Cargar imagen del Artista:</label>
+                        <input type="text" class="form-control" minlength="3" maxlength="45" id="txtImagenArtista"
+                            name="txtImagenArtista">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFechaNacimiento">Fecha de Nacimiento: </label>
+                        <input type="date" class="form-control" id="txtFechaNacimiento" id="txtFechaNacimiento"
+                            name="txtFechaNacimiento" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

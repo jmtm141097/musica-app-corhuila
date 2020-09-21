@@ -1,0 +1,30 @@
+{{> head}}
+
+{{> navbar }}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-12 contenido">
+                {{#if errores}}
+                <div class="alert alert-danger text-left" role="alert">
+                    <h4 class="alert-heading">Error!</h4>
+                    <ul>
+                        {{#each errores}}
+                        <li>{{this.texto}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{/if}}
+                {{#if registro}}
+                <div class="alert alert-success text-left m-2" role="alert">
+                    <h4 class="alert-heading">En hora buena!!</h4>
+                    <p> El registro del artista {{artistas.nombreCompleto}} fue exitoso.</p>
+                </div>
+                {{/if}}
+                {{ prettyJson artistas }}
+            </div>
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}
