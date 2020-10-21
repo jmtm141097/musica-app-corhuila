@@ -1,0 +1,36 @@
+{{> head}}
+
+{{> navbar }}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row m-2">
+            <div class="col-sm-12 text-center">
+                <h1 class="text-uppercase">{{grupo.nombreGrupo}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="{{grupo.imagenGrupo}}" alt="{{grupo.nombreGrupo}}"
+                                    class="img-content img-thumbnail">
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-sm-12">
+                <h4>Descripcion del Grupo:</h4>
+                <p class="text-justify">{{grupo.descripcionGrupo}}</p>
+            </div>
+            <div class="col-sm-12 align-self-center">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button data-grupo-url="{{grupo.url}}" id="eliminar-grupo" type="button" class="btn btn-danger btn-lg btn-block">Eliminar</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="/grupo/editar/{{grupo.idGrupo}}"><button type="button" class="btn btn-primary btn-lg btn-block">Modificar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}

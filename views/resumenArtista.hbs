@@ -1,0 +1,41 @@
+{{> head}}
+
+{{> navbar }}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row m-2">
+            <div class="col-sm-12 text-center">
+                <h1 class="text-uppercase">{{artista.nombreCompleto}}</h1>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-sm-12">
+                <h4>Fecha de nacimiento: <span class="badge badge-pill badge-light">{{artista.fechaNacimiento}}</span></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <img src="{{artista.imagenArtista}}" alt="{{artista.nombreCompleto}}"
+                                    class="img-content img-thumbnail">
+            </div>
+            <div class="col-sm-4 align-self-center">
+                <div class="row">
+                    <div class="col-sm-12 mt-5">
+                        <button data-artista-url="{{artista.url}}" id="eliminar-artista" type="button" class="btn btn-danger btn-lg btn-block">Eliminar</button>
+                    </div>
+                    <div class="col-sm-12 mt-5">
+                        <a href="/artista/editar/{{artista.idArtistas}}"><button type="button" class="btn btn-primary btn-lg btn-block">Modificar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-sm-12">
+                <h4>Descripcion del artista:</h4>
+                <p class="text-justify">{{artista.descripcionArtista}}</p>
+            </div>
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}

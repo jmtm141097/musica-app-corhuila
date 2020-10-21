@@ -1,0 +1,48 @@
+{{> head}}
+
+{{> navbar }}
+<div class="row">
+    <div class="col-8">
+        {{!-- titulo --}}
+        <div class="row">
+            <div class="col-12 m-2">
+                <h1 class="text-center">Modificar Artista</h1>
+            </div>
+        </div>
+        {{!-- formulario --}}
+        <div class="row">
+            <div class="col-12">
+                <form action="/editarArtista/{{artista.idArtistas}}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="txtNombreArtista">Nombre del Artista:</label>
+                        <input type="text" value='{{artista.nombreCompleto}}'class="form-control" minlength="3" maxlength="45" id="txtNombreArtista"
+                            name="txtNombreArtista" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescripcionArtista">Descripcion del Artista:</label>
+                        <textarea class="form-control" name="txtDescripcionArtista" id="txtDescripcionArtista" cols="30"
+                            rows="10"required>{{artista.descripcionArtista}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtImagenArtista">Cargar imagen Artista:</label>
+                        <div class="custom-file">
+                            <input type="file" value="{{artista.imagenArtista}}" class="custom-file-input" id="txtImagenArtista"
+                            name="txtImagenArtista" lang="es">
+                            <label class="custom-file-label" for="txtImagenArtista">Seleccionar Archivo</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFechaNacimiento">Fecha de Nacimiento: </label>
+                        <input type="date" value="{{artista.fechaNacimiento}}" class="form-control" id="txtFechaNacimiento" id="txtFechaNacimiento"
+                            name="txtFechaNacimiento" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}

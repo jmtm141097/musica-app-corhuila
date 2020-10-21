@@ -8,30 +8,33 @@
                 {{> crearGrupoModal}}
             </div>
         </div>
+        {{#if errores}}
+            <div class="alert alert-danger text-left" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <ul>
+                    {{#each errores}}
+                    <li>{{this.texto}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
         <div class="row">
+            {{#if grupos}}
+            {{#each grupos}}
             <div class="col-sm-12 contenido">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Los Hombres G</h3>
+                        <h3 class="text-uppercase">{{this.nombreGrupo}}</h3>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">La cagaste... Burt Lancaster</h4>
+                        <h4 class="card-title">Descripcion del Grupo:</h4>
                         <div class="row">
                             <div class="col-md-7">
-                                <p class="card-text text-justify">En febrero de 1986 el grupo volvió a los estudios para
-                                    grabar su segundo álbum, que pasó a titularse como una de sus primeras
-                                    canciones: La cagaste... Burt Lancaster, aunque ésta no fuera incluida en el álbum
-                                    por considerarse que "sonaba mal".
-                                    Un mes antes de estar en las tiendas ya tenían peticiones en firme por más de
-                                    100.000 unidades, cifra que sería ampliamente
-                                    superada en cuanto el disco apareció en el mercado. Para esa ocasión recuperaron
-                                    otro de los temas publicados en los
-                                    sencillos de Lollipop, "Marta tiene un marcapasos", que sería uno de los tres
-                                    sencillos que llegaron al número uno de
-                                    las listas de ventas españolas.</p>
+                                <p class="card-text text-justify d-inline-block text-truncate" style="max-width: 400px">{{this.descripcionGrupo}}</p>
+                                <a href="/grupo/{{this.url}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Seguir leyendo...</a>
                             </div>
                             <div class="col-md-5 align-self-center">
-                                <img src="assets/img/hombresg.jpg" alt="Banda Hombres G"
+                                <img src="{{this.imagenGrupo}}" alt="{{this.nombreGrupo}}"
                                     class="img-content img-thumbnail">
                             </div>
                         </div>
@@ -46,6 +49,12 @@
                     </div>
                 </div>
             </div>
+            {{/each}}
+            {{else}}
+            <div class="col-sm-12 contenido text-center">
+                <h1>No se ha registrado ningun grupo.</h1>
+            </div>
+            {{/if}}
         </div>
     </div>
     {{> buscador}}

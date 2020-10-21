@@ -6,6 +6,7 @@ const routes = require('./routes/routes');
 const path = require('path');
 // Importacion del body parser
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 // conexion a la base de datos.
 const db = require('./db/db');
 
@@ -17,15 +18,22 @@ db.sync()
 
 const app = express();
 
+app.use(fileUpload({
+    uriDecodeFileNames: true,
+    useTempFiles: true,
+    tempFileDir: '/tmp/'
+}));
+
 // Puerto por el cual correra nuestro servidor.
 const port = process.env.PORT || 3000;
 
 // Localizacion de nuestros directorios publicos
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 
 // Express utilizando HBS
-hbs.registerPartials(__dirname + '/views/parciales');
 app.set('view engine', 'hbs');
+
+hbs.registerPartials(__dirname + '/views/parciales');
 
 app.set('views', path.join(__dirname, './views'));
 

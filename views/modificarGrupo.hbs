@@ -1,0 +1,43 @@
+{{> head}}
+
+{{> navbar }}
+<div class="row">
+    <div class="col-8">
+        {{!-- titulo --}}
+        <div class="row">
+            <div class="col-12 m-2">
+                <h1 class="text-center">Modificar Grupo</h1>
+            </div>
+        </div>
+        {{!-- formulario --}}
+        <div class="row">
+            <div class="col-12">
+                <form action="/editarGrupo/{{grupo.idGrupo}}" method="POST" class="was-validated" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="txtNombreGrupo">Nombre del Grupo:</label>
+                        <input type="text" value='{{grupo.nombreGrupo}}'class="form-control" minlength="3" maxlength="45" id="txtNombreGrupo"
+                            name="txtNombreGrupo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescripcionGrupo">Descripcion del Grupo:</label>
+                        <textarea class="form-control" name="txtDescripcionGrupo" id="txtDescripcionGrupo" cols="30"
+                            rows="10"required>{{grupo.descripcionGrupo}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtImagenGrupo">Cargar imagen del Grupo:</label>
+                        <div class="custom-file">
+                            <input type="file" value="{{grupo.imagenGrupo}}" class="custom-file-input" id="txtImagenGrupo"
+                            name="txtImagenGrupo" lang="es">
+                            <label class="custom-file-label" for="txtImagenGrupo">Seleccionar Archivo</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}

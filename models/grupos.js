@@ -3,28 +3,28 @@ const slug = require('slug');
 const shortId = require('shortid');
 const db = require('../db/db');
 
-const artistas = db.define('Artistas', {
+const grupos = db.define('Grupos', {
 
-    idArtistas: {
+    idGrupo: {
         primaryKey: true,
         autoIncrement: true,
         type: sequelize.INTEGER
     },
-    nombreCompleto: {
+    nombreGrupo: {
         type: sequelize.STRING(50),
         allowNull: false
     },
-    descripcionArtista: {
+    descripcionGrupo: {
         type: sequelize.TEXT('long'),
         allowNull: false
     },
-    imagenArtista: {
+    numeroVisitas: {
+        type: sequelize.INTEGER,
+        defaultValue: 0
+    },
+    imagenGrupo: {
         type: sequelize.STRING(100),
         defaultValue: 'img/no-image.png'
-    },
-    fechaNacimiento: {
-        type: sequelize.DATEONLY(),
-        defaultValue: '1850-12-31'
     },
     url: sequelize.STRING
 
@@ -32,10 +32,10 @@ const artistas = db.define('Artistas', {
 
     hooks: {
 
-        beforeCreate(artista) {
+        beforeCreate(grupo) {
 
-            const url = slug(artista.nombreCompleto).toLowerCase();
-            artista.url = `${url}-${shortId.generate()}`;
+            const url = slug(grupo.nombreGrupo).toLowerCase();
+            grupo.url = `${url}-${shortId.generate()}`;
 
         }
 
@@ -43,4 +43,4 @@ const artistas = db.define('Artistas', {
 
 });
 
-module.exports = artistas;
+module.exports = grupos;

@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearGrupo">
-    Crear un nuevo grupo
+    Nuevo Grupo
 </button>
 
 <!-- Modal -->
@@ -14,26 +14,30 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" method="POST" enctype="multipart/form-data" class="was-validated">
+            <form action="/nuevoGrupo" method="POST" enctype="multipart/form-data" class="was-validated">
 
                 <div class="modal-body text-left">
-                    <div class="alert alert-danger" role="alert" id="errorNombre">
-                        <h4 class="alert-heading">Error!</h4>
-                        <p>No digitaste un valor esperado en este campo</p>
-                    </div>
                     <div class="form-group">
-                        <label for="txtNombreGrupo">Nombre del grupo:</label>
+                        <label for="txtNombreGrupo">Nombre del Grupo:</label>
                         <input type="text" class="form-control" minlength="3" maxlength="45" id="txtNombreGrupo"
-                            required>
+                            name="txtNombreGrupo" required>
                     </div>
                     <div class="form-group">
-                        <label for="txtImagenGrupo">Cargar imagen del Grupo: </label>
-                        <input type="file" class="form-control" id="txtImagenGrupo"
-                            required>
+                        <label for="txtDescripcionGrupo">Descripcion del Grupo:</label>
+                        <textarea class="form-control" name="txtDescripcionGrupo" id="txtDescripcionGrupo" cols="30"
+                            rows="10" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtImagenGrupo">Cargar imagen del Grupo:</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="txtImagenGrupo"
+                            name="txtImagenGrupo" lang="es">
+                            <label class="custom-file-label" for="txtImagenGrupo">Seleccionar Archivo</label>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
             </form>
