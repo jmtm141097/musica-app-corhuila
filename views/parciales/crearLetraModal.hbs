@@ -1,0 +1,72 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearLetra">
+    Nueva Letra
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="crearLetra" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="crearLetraLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearLetraLabel">Escribir una nueva cancion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/nuevaLetra" method="POST" class="was-validated">
+
+                <div class="modal-body text-left">
+                    <div class="form-group">
+                        <label for="txtNombreCancion">Titulo de la cancion:</label>
+                        <input type="text" class="form-control" minlength="3" maxlength="45" id="txtNombreCancion"
+                            name="txtNombreCancion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescripcionCancion">Descripcion de la cancion:</label>
+                        <textarea class="form-control" name="txtDescripcionCancion" id="txtDescripcionCancion" cols="30"
+                            rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtLetraCancion">Letra de la cancion:</label>
+                        <textarea class="form-control" name="txtLetraCancion" id="txtLetraCancion" cols="30"
+                            rows="10" required></textarea>
+                    </div>
+                    <label for="autor">La interpreta un:</label>
+                    <div name="autor" id="autor" class="row">
+                        <div class="col 6">
+                            <div class="form-group">
+                                <label for="txtIdArtista">Autor:</label>
+                                {{#if artistas}}
+                                    <select class="custom-select" name="txtIdArtista" id="txtIdArtista">
+                                        <option selected>Selecciona un artista</option>
+                                        {{#each artistas}}
+                                            <option value={{this.idArtistas}}>{{this.nombreCompleto}}</option>
+                                        {{/each}}
+                                    </select>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="col 6">
+                            <div class="form-group">
+                                <label for="txtIdGrupo">Grupo:</label>
+                                {{#if grupos}}
+                                    <select class="custom-select" name="txtIdGrupo" id="txtIdGrupo">
+                                        <option selected>Selecciona un grupo</option>
+                                        {{#each grupos}}
+                                            <option value={{this.idGrupo}}>{{this.nombreGrupo}}</option>
+                                        {{/each}}
+                                    </select>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

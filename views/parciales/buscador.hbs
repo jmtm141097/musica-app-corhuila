@@ -16,17 +16,17 @@
         </div>
         <div class="col-sm-12 option-search">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                    Devuelveme a mi chica
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">Te quiero</a>
-                <a href="#" class="list-group-item list-group-item-action">Rita</a>
-                <a href="#" class="list-group-item list-group-item-action">Dejad que las chicas se acerquen a mi</a>
-                <a href="#" class="list-group-item list-group-item-action">El ataque de las chicas cocodrilo</a>
-                <a href="#" class="list-group-item list-group-item-action">Venezia</a>
-                <a href="#" class="list-group-item list-group-item-action">Temblando</a>
-                <a href="#" class="list-group-item list-group-item-action">No llorare</a>
-                <a href="#" class="list-group-item list-group-item-action">Todo lo que puedo decir</a>
+                {{#if letras}}
+                    {{#each letras}}
+                        <a href="{{this.url}}" class="list-group-item list-group-item-action">
+                            {{this.nombreCancion}}
+                        </a>
+                    {{/each}}
+                {{else}}
+                    <a href="#" class="list-group-item list-group-item-action">
+                            No se han registrado letras.
+                    </a>
+                {{/if}}
             </div>
         </div>
     </div>

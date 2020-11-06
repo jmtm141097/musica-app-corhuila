@@ -36,6 +36,12 @@ module.exports = function() {
 
     router.get('/top', homeController.topPage);
     router.get('/letras', letrasController.letrasPage);
+    router.post('/nuevaLetra', [
+        body('txtNombreCancion').not().isEmpty().trim().escape(),
+        body('txtDescripcionCancion').not().isEmpty().trim().escape(),
+    ], letrasController.nuevaCancion);
+    router.get('/letra/:url', letrasController.letraPorUrl);
+
     return router;
 
 };

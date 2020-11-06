@@ -1,0 +1,36 @@
+{{> head}}
+
+{{> navbar }}
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row m-2">
+            <div class="col-sm-12 text-center">
+                <h1 class="text-uppercase">{{letra.nombreCancion}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h4>Letra de la cancion</h4>
+                <br>
+                <pre>{{letra.letraCancion}}</pre>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-sm-12">
+                <h4>Descripcion de la cancion:</h4>
+                <p class="text-justify">{{letra.descripcionCancion}}</p>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-sm-12">
+                <h4>Interpretes:</h4>
+                <h5>Grupo:</h5>
+                <p class="text-justify">{{grupo.nombreGrupo}}</p>
+                <h5>Autor:</h5>
+                <p class="text-justify">{{artista.nombreCompleto}}</p>
+            </div>
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}

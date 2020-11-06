@@ -3,7 +3,7 @@ const slug = require('slug');
 const shortId = require('shortid');
 const db = require('../db/db');
 
-const artistas = db.define('Artistas', {
+const Artistas = db.define('Artistas', {
 
     idArtistas: {
         primaryKey: true,
@@ -43,4 +43,4 @@ const artistas = db.define('Artistas', {
 
 });
 
-module.exports = artistas;
+module.exports = Artistas;

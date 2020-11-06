@@ -3,7 +3,7 @@ const slug = require('slug');
 const shortId = require('shortid');
 const db = require('../db/db');
 
-const grupos = db.define('Grupos', {
+const Grupos = db.define('Grupos', {
 
     idGrupo: {
         primaryKey: true,
@@ -43,4 +43,4 @@ const grupos = db.define('Grupos', {
 
 });
 
-module.exports = grupos;
+module.exports = Grupos;

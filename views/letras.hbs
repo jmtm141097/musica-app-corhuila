@@ -2,14 +2,58 @@
 
 {{> navbar }}
 <div class="row">
-    <div class="col">
-        <h1>Bienvenidos a la pagina Letras</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum magnam nobis suscipit earum repudiandae
-            possimus. Excepturi, earum? Quasi illo aliquam ipsum placeat maxime quidem, fugit repudiandae asperiores,
-            provident delectus saepe!</p>
-    </div>
-    <div class="col">
-        <img src="assets/img/aerosmith.jpg" class="img-thumbnail">
+    <div class="col-sm-8">
+        <div class="row m-3">
+            <div class="col-sm-12 text-right">
+                {{> crearLetraModal}}
+            </div>
+        </div>
+        {{#if errores}}
+            <div class="alert alert-danger text-left" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <ul>
+                    {{#each errores}}
+                    <li>{{this.texto}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+        <div class="row">
+            {{#if letras}}
+            {{#each letras}}
+            <div class="col-sm-12 contenido">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-uppercase">{{this.nombreCancion}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Letra de la cancion:</h4>
+                        <div class="row">
+                            <div class="col-md-8 align-self-center">
+                                <p class="card-text text-truncate" style="max-width: 400px">{{this.letraCancion}}</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="/letra/{{this.url}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Mas...</a>
+                            </div>
+                        </div>
+                        <div class="row comentario">
+                            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-1 col-2 hidden-sm hidden-xs">
+                                <i class="fas fa-user fa-3x logo-user"></i>
+                            </div>
+                            <div class="col-xl-11 col-lg-11 col-md-10 col-sm-11 col-10 form-group">
+                                <textarea class="form-control" placeholder="Comentario"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="col-sm-12 contenido text-center">
+                <h1>No se han registrado letras</h1>
+            </div>
+            {{/if}}
+        </div>
     </div>
     {{> buscador}}
 </div>

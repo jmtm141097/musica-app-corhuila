@@ -1,13 +1,18 @@
 const { req, res } = require("express");
 const Grupos = require("../models/grupos");
+const Letras = require("../models/letras");
 
 gruposPage = async(req, res) => {
 
-    const grupos = await Grupos.findAll();
+    const letras = await Letras.findAll();
+    const grupos = await Grupos.findAll({
+        offset: 1
+    });
 
     res.render('grupos', {
         nombrePagina: 'Grupos',
-        grupos
+        grupos,
+        letras
     });
 
 };
@@ -22,10 +27,6 @@ nuevoGrupo = async(req, res) => {
 
     if (!body.txtNombreGrupo) {
         errores.push({ 'texto': 'Digita el nombre del Grupo' });
-    }
-
-    if (!/^[a-záéíóúA-ZÁÉÍÓÚñÑ ]+$/.test(body.txtNombreGrupo)) {
-        errores.push({ 'texto': 'En el nombre del grupo solo se aceptan Letras A-Z, no caracteres especiales' });
     }
 
     if (!body.txtDescripcionGrupo) {
@@ -75,6 +76,8 @@ nuevoGrupo = async(req, res) => {
 
 grupoPorUrl = async(req, res, next) => {
 
+    const letras = await Letras.findAll();
+
     const grupoPromise = Grupos.findOne({
         where: {
             url: req.params.url
@@ -87,12 +90,15 @@ grupoPorUrl = async(req, res, next) => {
 
     res.render('resumenGrupo', {
         nombrePagina: 'Resumen del Grupo',
+        letras,
         grupo
     });
 
 };
 
 formularioEditarGrupo = async(req, res) => {
+
+    const letras = await Letras.findAll();
 
     const grupoPromise = Grupos.findOne({
         where: {
@@ -104,7 +110,8 @@ formularioEditarGrupo = async(req, res) => {
 
     res.render('modificarGrupo', {
         nombrePagina: 'Modificar grupo',
-        grupo
+        grupo,
+        letras
     });
 
 };

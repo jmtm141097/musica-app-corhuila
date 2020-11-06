@@ -1,13 +1,18 @@
 const { req, res } = require("express");
 const Artistas = require("../models/artistas");
+const Letras = require("../models/letras");
 
 artistasPage = async(req, res) => {
 
-    const artistas = await Artistas.findAll();
+    const letras = await Letras.findAll();
+    const artistas = await Artistas.findAll({
+        offset: 1
+    });
 
     res.render('artistas', {
         nombrePagina: 'Artistas',
-        artistas
+        artistas,
+        letras
     });
 
 };
@@ -32,10 +37,6 @@ nuevoArtista = async(req, res) => {
 
     if (!body.txtFechaNacimiento) {
         errores.push({ 'texto': 'Ingresa la fecha de nacimiento del Artista' });
-    }
-
-    if (!/^[a-záéíóúA-ZÁÉÍÓÚñÑ ]+$/.test(body.txtNombreArtista)) {
-        errores.push({ 'texto': 'En el nombre del artista solo se aceptan Letras A-Z, no caracteres especiales' });
     }
 
     if (!req.files) {
@@ -82,6 +83,7 @@ nuevoArtista = async(req, res) => {
 
 artistaPorUrl = async(req, res, next) => {
 
+    const letras = await Letras.findAll();
     const artistaPromise = Artistas.findOne({
         where: {
             url: req.params.url
@@ -94,13 +96,15 @@ artistaPorUrl = async(req, res, next) => {
 
     res.render('resumenArtista', {
         nombrePagina: 'Resumen del Artista',
-        artista
+        artista,
+        letras
     });
 
 };
 
 formularioEditarArtista = async(req, res) => {
 
+    const letras = await Letras.findAll();
     const artistaPromise = Artistas.findOne({
         where: {
             idArtistas: req.params.id
@@ -111,7 +115,8 @@ formularioEditarArtista = async(req, res) => {
 
     res.render('modificarArtista', {
         nombrePagina: 'Modificar artista',
-        artista
+        artista,
+        letras
     });
 
 };
