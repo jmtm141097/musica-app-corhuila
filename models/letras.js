@@ -25,6 +25,10 @@ const Letras = db.define('Letras', {
         type: sequelize.TEXT('long'),
         allowNull: false
     },
+    numeroVisitas: {
+        type: sequelize.INTEGER,
+        defaultValue: 0
+    },
     url: sequelize.STRING
 
 }, {

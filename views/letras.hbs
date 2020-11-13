@@ -20,9 +20,33 @@
         {{/if}}
         <div class="row">
             {{#if letras}}
-            {{#each letras}}
-            <div class="col-sm-12 contenido">
-                <div class="card">
+                <div class="list-group">
+                    <div class="letras">
+                        {{#each letras}}
+                            <a href="/letra/{{this.url}}" data-letra="{{this.idLetra}}" class="list-group-item list-group-item-action visitas">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{this.nombreCancion}}</h5>
+                                    <small>{{this.numeroVisitas}} Visitas</small>
+                                </div>
+                                <p class="mb-1 text-truncate" style="width: 700px;">{{this.descripcionCancion}}</p>
+                                <small>Haz click, si quieres leer la letra!</small>
+                            </a>
+                        {{/each}}
+                    </div>
+                </div>
+            {{else}}
+                <div class="alert alert-danger" role="alert">
+                    <h1>No se han registrado letras</h1>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}
+
+            {{!-- <div class="col-sm-12 contenido">
+                <div class="card" data-letra={{this.idLetra}}>
                     <div class="card-header">
                         <h3 class="text-uppercase">{{this.nombreCancion}}</h3>
                     </div>
@@ -33,7 +57,7 @@
                                 <p class="card-text text-truncate" style="max-width: 400px">{{this.letraCancion}}</p>
                             </div>
                             <div class="col-md-4 text-center">
-                                <a href="/letra/{{this.url}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Mas...</a>
+                                <a href="/letra/{{this.url}}" class="btn btn-secondary btn-lg active visitas" role="button" aria-pressed="true">Mas...</a>
                             </div>
                         </div>
                         <div class="row comentario">
@@ -46,15 +70,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            {{/each}}
-            {{else}}
-            <div class="col-sm-12 contenido text-center">
-                <h1>No se han registrado letras</h1>
-            </div>
-            {{/if}}
-        </div>
-    </div>
-    {{> buscador}}
-</div>
-{{> footer}}
+            </div> --}}

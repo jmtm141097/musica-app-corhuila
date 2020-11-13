@@ -6,10 +6,17 @@ const artistasController = require('../controllers/ArtistasController');
 const gruposController = require('../controllers/GruposController');
 const homeController = require('../controllers/HomeController');
 const letrasController = require('../controllers/LetrasController');
+const UsuariosController = require('../controllers/UsuariosController');
 
 module.exports = function() {
 
+    //Login
+    router.get('/iniciar-sesion', UsuariosController.loginPage);
+    router.get('/crear-cuenta', UsuariosController.formCrearCuenta);
+    router.post('/crear-cuenta', UsuariosController.crearCuenta);
+
     router.get('/', homeController.homePage);
+    router.get('/top', homeController.topPage);
 
     //Artistas.
     router.get('/artistas', artistasController.artistasPage);
@@ -34,8 +41,9 @@ module.exports = function() {
     router.post('/editarGrupo/:id', gruposController.editarGrupo);
     router.delete('/grupo/:url', gruposController.eliminarGrupo);
 
-    router.get('/top', homeController.topPage);
+    //letras.
     router.get('/letras', letrasController.letrasPage);
+    router.patch('/letras/:id', letrasController.actualizarVisitas);
     router.post('/nuevaLetra', [
         body('txtNombreCancion').not().isEmpty().trim().escape(),
         body('txtDescripcionCancion').not().isEmpty().trim().escape(),

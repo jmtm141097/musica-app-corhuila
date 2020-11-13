@@ -427,7 +427,19 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;function
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modulos_artistas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulos/artistas */ \"./public/js/modulos/artistas.js\");\n/* harmony import */ var _modulos_grupos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulos/grupos */ \"./public/js/modulos/grupos.js\");\n\n\n\n//# sourceURL=webpack:///./public/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modulos_artistas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulos/artistas */ \"./public/js/modulos/artistas.js\");\n/* harmony import */ var _modulos_grupos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulos/grupos */ \"./public/js/modulos/grupos.js\");\n/* harmony import */ var _modulos_instrucciones__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modulos/instrucciones */ \"./public/js/modulos/instrucciones.js\");\n/* harmony import */ var _modulos_letras__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modulos/letras */ \"./public/js/modulos/letras.js\");\n/* harmony import */ var _modulos_letrasBuscador__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modulos/letrasBuscador */ \"./public/js/modulos/letrasBuscador.js\");\n/* harmony import */ var _funciones_instrucciones__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./funciones/instrucciones */ \"./public/js/funciones/instrucciones.js\");\n\n\n\n\n\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  Object(_funciones_instrucciones__WEBPACK_IMPORTED_MODULE_5__[\"instrucciones\"])();\n});\n\n//# sourceURL=webpack:///./public/js/app.js?");
+
+/***/ }),
+
+/***/ "./public/js/funciones/instrucciones.js":
+/*!**********************************************!*\
+  !*** ./public/js/funciones/instrucciones.js ***!
+  \**********************************************/
+/*! exports provided: instrucciones */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"instrucciones\", function() { return instrucciones; });\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ \"./node_modules/sweetalert2/dist/sweetalert2.all.js\");\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);\n\nvar instrucciones = function instrucciones() {\n  var instrucciones = document.querySelectorAll('li.instruccion');\n  var instruccionesCompletadas = document.querySelectorAll('i.completo');\n  var avance = Math.round(instruccionesCompletadas.length / instrucciones.length * 100);\n  var porcentaje = document.querySelector('#porcentaje');\n  porcentaje.style.width = avance + '%';\n\n  if (avance == 100) {\n    sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('Instrucciones completadas', 'Felicidades, ahora puedes disfrutar del aplicativo', 'success');\n  }\n};\n\n//# sourceURL=webpack:///./public/js/funciones/instrucciones.js?");
 
 /***/ }),
 
@@ -452,6 +464,42 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var swee
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ \"./node_modules/sweetalert2/dist/sweetalert2.all.js\");\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);\n\n\nvar btnEliminarGrupo = document.querySelector('#eliminar-grupo');\n\nif (btnEliminarGrupo) {\n  btnEliminarGrupo.addEventListener('click', function (e) {\n    var urlGrupo = e.target.dataset.grupoUrl;\n    sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({\n      title: 'Quieres eliminar el grupo?',\n      text: \"Si se elimina, se pierde la informacion registrada!\",\n      icon: 'warning',\n      showCancelButton: true,\n      confirmButtonColor: '#3085d6',\n      cancelButtonColor: '#d33',\n      confirmButtonText: 'Si, Borrarlo!',\n      cancelButtonText: 'Cancelar!'\n    }).then(function (result) {\n      if (result.value) {\n        var url = \"\".concat(location.origin, \"/grupo/\").concat(urlGrupo);\n        axios__WEBPACK_IMPORTED_MODULE_1___default.a[\"delete\"](url, {\n          params: {\n            urlGrupo: urlGrupo\n          }\n        }).then(function (respuesta) {\n          console.log(respuesta);\n          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire('Grupo Borrado!', respuesta.data, 'success');\n          setTimeout(function () {\n            window.location.href = '/grupos';\n          }, 2000);\n        })[\"catch\"](function () {\n          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({\n            type: 'error',\n            title: 'Hubo un error',\n            text: 'No se pudo eliminar el grupo',\n            icon: 'error'\n          });\n        });\n      }\n    });\n  });\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (btnEliminarGrupo);\n\n//# sourceURL=webpack:///./public/js/modulos/grupos.js?");
+
+/***/ }),
+
+/***/ "./public/js/modulos/instrucciones.js":
+/*!********************************************!*\
+  !*** ./public/js/modulos/instrucciones.js ***!
+  \********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _funciones_instrucciones__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../funciones/instrucciones */ \"./public/js/funciones/instrucciones.js\");\n\nvar instru = document.querySelector('.listado-instrucciones');\n\nif (instru) {\n  instru.addEventListener('click', function (e) {\n    if (e.target.classList.contains('fa-check-circle')) {\n      var icono = e.target;\n      icono.classList.toggle('completo');\n      Object(_funciones_instrucciones__WEBPACK_IMPORTED_MODULE_0__[\"instrucciones\"])();\n    }\n  });\n}\n\n//# sourceURL=webpack:///./public/js/modulos/instrucciones.js?");
+
+/***/ }),
+
+/***/ "./public/js/modulos/letras.js":
+/*!*************************************!*\
+  !*** ./public/js/modulos/letras.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar letras = document.querySelector('.letras');\nconsole.log(letras);\n\nif (letras) {\n  letras.addEventListener('click', function (e) {\n    if (e.target.classList.contains('visitas')) {\n      var target = e.target;\n      var idLetra = target.dataset.letra;\n      console.log(idLetra);\n      var url = \"\".concat(location.origin, \"/letras/\").concat(idLetra);\n      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch(url, {\n        idLetra: idLetra\n      }).then(function (respuesta) {\n        alert('Ocurrio un error inesperado: \\n' + respuesta);\n      });\n    }\n  });\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (letras);\n\n//# sourceURL=webpack:///./public/js/modulos/letras.js?");
+
+/***/ }),
+
+/***/ "./public/js/modulos/letrasBuscador.js":
+/*!*********************************************!*\
+  !*** ./public/js/modulos/letrasBuscador.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar letrasBuscador = document.querySelector('.letrasBuscador');\n\nif (letrasBuscador) {\n  letrasBuscador.addEventListener('click', function (e) {\n    if (e.target.classList.contains('visitasBuscador')) {\n      var target = e.target;\n      var idLetra = target.dataset.letra;\n      console.log(idLetra);\n      var url = \"\".concat(location.origin, \"/letras/\").concat(idLetra);\n      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch(url, {\n        idLetra: idLetra\n      }).then(function (respuesta) {\n        alert('Ocurrio un error inesperado: \\n' + respuesta);\n      });\n    }\n  });\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (letrasBuscador);\n\n//# sourceURL=webpack:///./public/js/modulos/letrasBuscador.js?");
 
 /***/ })
 

@@ -15,10 +15,10 @@
             </div>
         </div>
         <div class="col-sm-12 option-search">
-            <div class="list-group">
+            <div class="list-group letrasBuscador">
                 {{#if letras}}
                     {{#each letras}}
-                        <a href="{{this.url}}" class="list-group-item list-group-item-action">
+                        <a href="/letra/{{this.url}}" data-letra={{this.idLetra}} class="list-group-item list-group-item-action visitasBuscador">
                             {{this.nombreCancion}}
                         </a>
                     {{/each}}

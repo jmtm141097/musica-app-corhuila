@@ -18,10 +18,33 @@
                 </ul>
             </div>
         {{/if}}
-        <div class="row">
-            {{#if artistas}}
-            {{#each artistas}}
-            <div class="col-sm-12 contenido">
+        {{#if artistas}}
+            <div class="row">
+                <div class="row row-cols-1 row-cols-md-2 m-3">
+                    {{#each artistas}}
+                        <div class="col mb-4">
+                            <img src="{{this.imagenArtista}}" class="card-img-top" alt="{{this.nombreCompleto}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.nombreCompleto}}</h5>
+                                <p class="card-text text-truncate" style="width: 230px;">{{this.descripcionArtista}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"><a href="/artista/{{this.url}}" class="stretched-link">Seguir leyendo...</a></small>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{else}}
+            <div class="alert alert-danger" role="alert">
+                <h1>No se han registrado artistas.</h1>
+            </div>
+        {{/if}}
+    </div>
+    {{> buscador}}
+</div>
+{{> footer}}
+{{!-- <div class="col-sm-12 contenido">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="text-uppercase">{{this.nombreCompleto}}</h3>
@@ -49,15 +72,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            {{/each}}
-            {{else}}
-            <div class="col-sm-12 contenido text-center">
-                <h1>No se han registrado artistas.</h1>
-            </div>
-            {{/if}}
-        </div>
-    </div>
-    {{> buscador}}
-</div>
-{{> footer}}
+            </div> --}}

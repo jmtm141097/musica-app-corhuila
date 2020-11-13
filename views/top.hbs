@@ -3,13 +3,33 @@
 {{> navbar }}
 <div class="row">
     <div class="col">
-        <h1>Bienvenidos a la pagina TOP 10</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum magnam nobis suscipit earum repudiandae
-            possimus. Excepturi, earum? Quasi illo aliquam ipsum placeat maxime quidem, fugit repudiandae asperiores,
-            provident delectus saepe!</p>
-    </div>
-    <div class="col">
-        <img src="assets/img/aerosmith.jpg" class="img-thumbnail">
+        <h1 class="m-4 text-center">Las TOP 10 mas visitadas</h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre de la cancion</th>
+              <th scope="col">Artista</th>
+              <th scope="col">Grupo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#if letras}}
+                {{#each letras}}
+                    <tr>
+                      <th scope="row">{{position}}</th>
+                      <td>{{this.nombreCancion}}</td>
+                      <td>{{this.Artista.nombreCompleto}}</td>
+                      <td>{{this.Grupo.nombreGrupo}}</td>
+                    </tr>
+                {{/each}}
+            {{else}}
+              <div class="alert alert-danger" role="alert">
+                No hay informacion
+              </div>
+            {{/if}}
+          </tbody>
+        </table>
     </div>
     {{> buscador}}
 </div>

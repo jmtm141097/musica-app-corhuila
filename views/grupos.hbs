@@ -18,44 +18,28 @@
                 </ul>
             </div>
         {{/if}}
-        <div class="row">
-            {{#if grupos}}
-            {{#each grupos}}
-            <div class="col-sm-12 contenido">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="text-uppercase">{{this.nombreGrupo}}</h3>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Descripcion del Grupo:</h4>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <p class="card-text text-justify d-inline-block text-truncate" style="max-width: 400px">{{this.descripcionGrupo}}</p>
-                                <a href="/grupo/{{this.url}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Seguir leyendo...</a>
+        {{#if grupos}}
+            <div class="row">
+                <div class="row row-cols-1 row-cols-md-2 m-3">
+                    {{#each grupos}}
+                        <div class="col mb-4">
+                            <img src="{{this.imagenGrupo}}" class="card-img-top rounded" alt="{{this.nombreGrupo}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.nombreGrupo}}</h5>
+                                <p class="card-text text-truncate" style="width: 230px;">{{this.descripcionGrupo}}</p>
                             </div>
-                            <div class="col-md-5 align-self-center">
-                                <img src="{{this.imagenGrupo}}" alt="{{this.nombreGrupo}}"
-                                    class="img-content img-thumbnail">
+                            <div class="card-footer">
+                                <small class="text-muted"><a href="/grupo/{{this.url}}" class="stretched-link">Seguir leyendo...</a></small>
                             </div>
                         </div>
-                        <div class="row comentario">
-                            <div class="col-xl-1 col-lg-1 col-md-2 col-sm-1 col-2 hidden-sm hidden-xs">
-                                <i class="fas fa-user fa-3x logo-user"></i>
-                            </div>
-                            <div class="col-xl-11 col-lg-11 col-md-10 col-sm-11 col-10 form-group">
-                                <textarea class="form-control" placeholder="Comentario"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
-            {{/each}}
-            {{else}}
-            <div class="col-sm-12 contenido text-center">
+        {{else}}
+            <div class="alert alert-danger" role="alert">
                 <h1>No se han registrado grupos.</h1>
             </div>
-            {{/if}}
-        </div>
+        {{/if}}
     </div>
     {{> buscador}}
 </div>

@@ -1,21 +1,34 @@
-// Importacion y despliegue del servidor
+// Importacion del servidor
 const express = require('express');
 // Importacion del motor de visualizacion
 const hbs = require('hbs');
+//importacion rutas
 const routes = require('./routes/routes');
 const path = require('path');
 // Importacion del body parser
 const bodyParser = require('body-parser');
+// Cargador de imagenes
 const fileUpload = require('express-fileupload');
 // conexion a la base de datos.
-const db = require('./db/db');
-
 require('./hbs/helpers/helpers');
+
+const flash = require('connect-flash');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const passport = require('./config/passport');
+
+require('./models/artistas');
+require('./models/grupos');
+require('./models/letras');
+require('./models/usuarios');
+
+const db = require('./db/db');
 
 db.sync()
     .then(() => console.log('Conexion exitosa a la BD'))
     .catch(err => console.log(err));
 
+//Usar express
 const app = express();
 
 app.use(fileUpload({
@@ -35,11 +48,26 @@ app.set('view engine', 'hbs');
 
 hbs.registerPartials(__dirname + '/views/parciales');
 
+// Habilitamos la libreria body parser
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.set('views', path.join(__dirname, './views'));
 
-// Habilitamos la libreria body parser
+//invocar flash
+app.use(flash());
 
-app.use(bodyParser.urlencoded({ extended: true }));
+//manejo de sesiones
+app.use(cookieParser());
+
+app.use(session({
+    secret: 'Secreto',
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+
+app.use(passport.session());
 
 // Rutas.
 app.use('/', routes());

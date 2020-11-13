@@ -1,39 +1,44 @@
-.logo{
+.logo {
     width: 75px;
     margin-top: 5px;
 }
 
-.redes-sociales{
+.redes-sociales {
     margin-top: 25px;
 }
 
-.nav-bar{
+.nav-bar {
     margin-top: 5px;
 }
-.navbar{
+
+.navbar {
     border-radius: 5px;
 }
 
-.buscador{
+.buscador {
     margin-top: 20px;
 }
 
-.logo-buscar{
+.logo-buscar {
     margin-top: 12px;
 }
 
-.contenido{
+.contenido {
     margin-top: 20px;
 }
 
-.comentario{
+.comentario {
     margin-top: 20px;
 }
 
-.logo-user{
+.logo-user {
     margin-top: 8px;
 }
 
-.img-content{
+.img-content {
     margin-top: 10px;
+}
+
+.completo {
+    color: purple;
 }

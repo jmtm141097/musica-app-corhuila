@@ -18,10 +18,6 @@ const Grupos = db.define('Grupos', {
         type: sequelize.TEXT('long'),
         allowNull: false
     },
-    numeroVisitas: {
-        type: sequelize.INTEGER,
-        defaultValue: 0
-    },
     imagenGrupo: {
         type: sequelize.STRING(100),
         defaultValue: 'img/no-image.png'

@@ -90,16 +90,33 @@ letraPorUrl = async(req, res, next) => {
 
     res.render('resumenLetra', {
         nombrePagina: 'Letra de la cancion',
+        letras,
         letra,
         grupo,
-        artista,
-        letras
+        artista
     });
+
+};
+
+actualizarVisitas = async(req, res) => {
+
+    const letra = await Letras.findOne({
+        where: {
+            idLetra: req.params.id
+        }
+    });
+
+    letra.numeroVisitas += 1;
+
+    const resultado = await letra.save();
+
+    if (!resultado) return next();
 
 };
 
 module.exports = {
     letrasPage,
     nuevaCancion,
-    letraPorUrl
+    letraPorUrl,
+    actualizarVisitas
 };
