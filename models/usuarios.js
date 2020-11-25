@@ -33,7 +33,9 @@ const Usuarios = db.define('Usuarios', {
                 msg: 'El password no puede ir vacio'
             }
         }
-    }
+    },
+    token: Sequelize.STRING,
+    expiracion: Sequelize.DATE
 }, {
     hooks: {
         beforeCreate(usuario) {
@@ -43,7 +45,7 @@ const Usuarios = db.define('Usuarios', {
     }
 });
 
-Usuarios.prototype.verificarPassword = (password) => {
+Usuarios.prototype.verificarPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 }
 

@@ -60,7 +60,7 @@ app.use(flash());
 app.use(cookieParser());
 
 app.use(session({
-    secret: 'Secreto',
+    secret: 'secreto',
     resave: false,
     saveUninitialized: false
 }));
@@ -68,6 +68,12 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(passport.session());
+
+app.use((req, resp, next) => {
+    resp.locals.mensajes = req.flash();
+    resp.locals.usuarios = {...req.user } || null;
+    next();
+});
 
 // Rutas.
 app.use('/', routes());

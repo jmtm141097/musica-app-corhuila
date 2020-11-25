@@ -5,7 +5,9 @@ const Grupos = require("../models/grupos");
 
 letrasPage = async(req, res) => {
 
-    const letras = await Letras.findAll();
+    const usuarioId = res.locals.usuarios.id;
+
+    const letras = await Letras.findAll({ where: { UsuarioId: usuarioId } });
     const artistas = await Artistas.findAll();
     const grupos = await Grupos.findAll();
 
@@ -54,7 +56,8 @@ nuevaCancion = async(req, res) => {
             descripcionCancion: body.txtDescripcionCancion,
             letraCancion: body.txtLetraCancion,
             ArtistaIdArtistas: artista.idArtistas,
-            GrupoIdGrupo: grupo.idGrupo
+            GrupoIdGrupo: grupo.idGrupo,
+            UsuarioId: res.locals.usuarios.id
         }).catch(err => console.log(err));
         res.redirect('/letras');
 

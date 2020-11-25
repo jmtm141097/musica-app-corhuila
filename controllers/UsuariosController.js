@@ -1,16 +1,21 @@
 const Usuarios = require('../models/usuarios');
 
-loginPage = async(req, res) => {
+loginPage = async(req, resp) => {
 
-    res.render('iniciarSesion', {
-        nombrePagina: 'Iniciar Sesion'
+    const { error } = resp.locals.mensajes;
+
+    console.log(error);
+
+    resp.render('iniciarSesion', {
+        nombrePagina: 'Iniciar Sesion',
+        error
     });
 
 };
 
-formCrearCuenta = async(req, res) => {
+formCrearCuenta = async(req, resp) => {
 
-    res.render('crearCuenta', {
+    resp.render('crearCuenta', {
         nombrePagina: 'Creacion de cuentas'
     })
 
@@ -28,18 +33,28 @@ crearCuenta = async(req, resp) => {
         resp.redirect('/iniciar-sesion');
     } catch (error) {
         req.flash('error', error.errors.map(error => error.message));
+        console.log(error.errors);
         resp.render('crearCuenta', {
             mensajes: req.flash(),
-            // errores: error.errors,
+            errores: error.errors,
             nombrePagina: 'Crear Cuenta Plataforma',
             email,
             password
         });
     }
-}
+};
+
+formRestablecerPassword = async(req, resp) => {
+
+    resp.render('restablecer', {
+        nombrePagina: 'Restablecer password'
+    });
+
+};
 
 module.exports = {
     loginPage,
     formCrearCuenta,
-    crearCuenta
+    crearCuenta,
+    formRestablecerPassword
 };
